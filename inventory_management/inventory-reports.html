@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Inventory Reports - Inventory Management System</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app" data-page="inventory-reports">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img src="images/logo.png" /><span
+          ><b>INVENTORY</b><small>MANAGEMENT</small></span
+        >
+      </div>
+      <nav>
+        <a class="nav-link" href="dashboard.html" data-page="dashboard"
+          ><span>⌂</span>Dashboard</a
+        >
+        <button class="nav-link inv-toggle" type="button">
+          <span>▦</span>Inventory <b>⌄</b>
+        </button>
+        <div class="submenu" id="inventorySubmenu">
+          <a href="item-master.html" data-page="item-master">Item Master</a>
+          <a href="raw-materials.html" data-page="raw-materials"
+            >Raw Materials</a
+          >
+          <a href="finished-goods.html" data-page="finished-goods"
+            >Finished Goods</a
+          >
+          <a href="warehouse.html" data-page="warehouse">Warehouse</a>
+          <a href="stock-in.html" data-page="stock-in">Stock In</a>
+          <a href="stock-out.html" data-page="stock-out">Stock Out</a>
+          <a href="stock-transfer.html" data-page="stock-transfer"
+            >Stock Transfer</a
+          >
+          <a href="stock-adjustment.html" data-page="stock-adjustment"
+            >Stock Adjustment</a
+          >
+          <a href="stock-card.html" data-page="stock-card">Stock Card</a>
+          <a href="stock-movement.html" data-page="stock-movement"
+            >Stock Movement</a
+          >
+          <a href="reorder-level.html" data-page="reorder-level"
+            >Reorder Level</a
+          >
+          <a href="low-stock-alert.html" data-page="low-stock-alert"
+            >Low Stock Alert</a
+          >
+          <a
+            class="admin-only"
+            href="inventory-reports.html"
+            data-page="inventory-reports"
+            >Inventory Reports</a
+          >
+          <a
+            class="admin-only"
+            href="request-sheet.html"
+            data-page="request-sheet"
+            >Request Sheet</a
+          >
+          <a href="delivery-progress.html" data-page="delivery-progress"
+            >Delivery Progress</a
+          ><a
+            class="admin-only"
+            href="delivery-receipt.html"
+            data-page="delivery-receipt"
+            >Delivery Receipt</a
+          ><a
+            class="admin-only"
+            href="rejected-items.html"
+            data-page="rejected-items"
+            >Rejected Items</a
+          >
+        </div>
+        <div class="side-label">SETTINGS</div>
+        <a class="nav-link" href="#" id="logoutBtn"><span>↪</span>Logout</a>
+      </nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button id="mobileMenu" class="mobile-menu">☰</button>
+        <div class="top-search">
+          ⌕<input
+            id="globalSearch"
+            placeholder="Find inventory, orders or reports"
+          />
+        </div>
+        <div class="top-actions">
+          <span>◔</span><span>◫</span
+          ><span class="user-chip"><b id="userName">Loading...</b></span>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-heading">
+          <div>
+            <h1>Inventory Reports</h1>
+            <p>Generate reports from actual inventory data.</p>
+          </div>
+          <div>
+            <button class="btn outline" id="printReport">Print Report</button>
+          </div>
+        </div>
+        <div class="filter-panel">
+          <select id="reportType">
+            <option value="monthly_summary">Monthly Inventory Summary</option>
+            <option value="inventory_summary">Inventory Summary</option>
+            <option value="stock_in">Stock In Report</option>
+            <option value="stock_out">Stock Out Report</option>
+            <option value="stock_transfer">Stock Transfer Report</option>
+            <option value="stock_adjustment">Stock Adjustment Report</option>
+            <option value="stock_movement">Stock Movement Report</option>
+            <option value="stock_card">Stock Card Report</option>
+            <option value="low_stock">Low Stock Report</option>
+            <option value="warehouse_inventory">
+              Warehouse Inventory Report
+            </option>
+            <option value="raw_materials">Raw Materials Report</option>
+            <option value="finished_goods">
+              Finished Goods Report
+            </option></select
+          ><input type="date" id="reportFrom" /><input
+            type="date"
+            id="reportTo"
+          /><select id="reportItem"></select
+          ><select id="reportTypeItem">
+            <option value="">All Item Types</option>
+            <option>Raw Material</option>
+            <option>Finished Good</option></select
+          ><select id="reportWarehouse"></select
+          ><select id="reportMovement">
+            <option value="">All Transactions</option>
+            <option>STOCK IN</option>
+            <option>STOCK OUT</option>
+            <option>STOCK TRANSFER IN</option>
+            <option>STOCK TRANSFER OUT</option>
+            <option>STOCK ADJUSTMENT</option></select
+          ><button class="btn primary" id="runReport">Run Report</button>
+        </div>
+        <div class="panel report-panel">
+          <div id="reportTitle"></div>
+          <div id="reportSummary" class="report-summary-cards"></div>
+          <div class="table-wrap">
+            <table>
+              <thead id="reportHead"></thead>
+              <tbody id="reportBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="js/inventory.js"></script>
+    <script src="js/pagination.js"></script>
+    <script src="js/reports.js"></script>
+  </body>
+</html>

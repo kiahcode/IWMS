@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Register - Inventory Management System</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body class="register-page">
+    <div class="register-card">
+      <a href="login.html" class="back-link">← Back to Login</a>
+      <div class="brand dark center">
+        <img src="images/logo.png" /><span
+          ><b>INVENTORY</b><small>MANAGEMENT SYSTEM</small></span
+        >
+      </div>
+      <div class="form-heading">
+        <h2>Create an Account</h2>
+        <p>Register a new user to access the system</p>
+      </div>
+      <form id="registerForm">
+        <div class="register-grid">
+          <label>Full Name<input name="full_name" required /></label>
+          <label>Email<input name="email" type="email" required /></label>
+          <label>Username<input name="username" required /></label>
+          <label
+            >Password<input
+              name="password"
+              type="password"
+              minlength="6"
+              required
+          /></label>
+          <label
+            >Confirm Password<input
+              name="confirm_password"
+              type="password"
+              minlength="6"
+              required
+          /></label>
+        </div>
+        <button class="btn primary full" type="submit">Create Account</button>
+        <div id="registerMessage" class="message"></div>
+      </form>
+      <p class="center-text">
+        Already have an account? <a href="login.html">Login</a>
+      </p>
+    </div>
+    <script src="js/register.js"></script>
+  </body>
+</html>

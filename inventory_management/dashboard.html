@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dashboard - Inventory Management System</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app" data-page="dashboard">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img src="images/logo.png" /><span
+          ><b>INVENTORY</b><small>MANAGEMENT</small></span
+        >
+      </div>
+      <nav>
+        <a class="nav-link" href="dashboard.html" data-page="dashboard"
+          ><span>⌂</span>Dashboard</a
+        >
+        <button class="nav-link inv-toggle" type="button">
+          <span>▦</span>Inventory <b>⌄</b>
+        </button>
+        <div class="submenu" id="inventorySubmenu">
+          <a href="item-master.html" data-page="item-master">Item Master</a>
+          <a href="raw-materials.html" data-page="raw-materials"
+            >Raw Materials</a
+          >
+          <a href="finished-goods.html" data-page="finished-goods"
+            >Finished Goods</a
+          >
+          <a href="warehouse.html" data-page="warehouse">Warehouse</a>
+          <a href="stock-in.html" data-page="stock-in">Stock In</a>
+          <a href="stock-out.html" data-page="stock-out">Stock Out</a>
+          <a href="stock-transfer.html" data-page="stock-transfer"
+            >Stock Transfer</a
+          >
+          <a href="stock-adjustment.html" data-page="stock-adjustment"
+            >Stock Adjustment</a
+          >
+          <a href="stock-card.html" data-page="stock-card">Stock Card</a>
+          <a href="stock-movement.html" data-page="stock-movement"
+            >Stock Movement</a
+          >
+          <a href="reorder-level.html" data-page="reorder-level"
+            >Reorder Level</a
+          >
+          <a href="low-stock-alert.html" data-page="low-stock-alert"
+            >Low Stock Alert</a
+          >
+          <a
+            class="admin-only"
+            href="inventory-reports.html"
+            data-page="inventory-reports"
+            >Inventory Reports</a
+          >
+          <a
+            class="admin-only"
+            href="request-sheet.html"
+            data-page="request-sheet"
+            >Request Sheet</a
+          >
+          <a href="delivery-progress.html" data-page="delivery-progress"
+            >Delivery Progress</a
+          ><a
+            class="admin-only"
+            href="delivery-receipt.html"
+            data-page="delivery-receipt"
+            >Delivery Receipt</a
+          ><a
+            class="admin-only"
+            href="rejected-items.html"
+            data-page="rejected-items"
+            >Rejected Items</a
+          >
+        </div>
+        <div class="side-label">SETTINGS</div>
+        <a class="nav-link" href="#" id="logoutBtn"><span>↪</span>Logout</a>
+      </nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button id="mobileMenu" class="mobile-menu">☰</button>
+        <div class="top-search">
+          ⌕<input
+            id="globalSearch"
+            placeholder="Find inventory, orders or reports"
+          />
+        </div>
+        <div class="top-actions">
+          <span>◔</span><span>◫</span
+          ><span class="user-chip"><b id="userName">Loading...</b></span>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-heading">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Overview of your inventory and warehouse operations.</p>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">▦</div>
+            <div>
+              <span>Total Items</span><strong id="totalItems">0</strong>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green-bg">◈</div>
+            <div>
+              <span>Raw Materials</span><strong id="rawMaterials">0</strong>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple-bg">◆</div>
+            <div>
+              <span>Finished Goods</span><strong id="finishedGoods">0</strong>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange-bg">▤</div>
+            <div>
+              <span>Total Stock</span><strong id="totalStock">0</strong>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue-bg">⌂</div>
+            <div>
+              <span>Total Warehouses</span
+              ><strong id="totalWarehouses">0</strong>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green-bg">↓</div>
+            <div>
+              <span>Stock In Today</span><strong id="stockInToday">0</strong>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange-bg">↑</div>
+            <div>
+              <span>Stock Out Today</span><strong id="stockOutToday">0</strong>
+            </div>
+          </div>
+          <div class="stat-card danger">
+            <div class="stat-icon red-bg">!</div>
+            <div>
+              <span>Low Stock Items</span><strong id="lowStockItems">0</strong>
+            </div>
+          </div>
+        </div>
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Inventory Overview</h3>
+              <a href="item-master.html">View All</a>
+            </div>
+            <div id="inventoryOverview" class="overview"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Low Stock Items</h3>
+              <a href="low-stock-alert.html">View All</a>
+            </div>
+            <div id="dashboardLowStock" class="compact-list"></div>
+          </section>
+        </div>
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Recent Stock Movements</h3>
+              <a href="stock-movement.html">View All</a>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Item</th>
+                    <th>Type</th>
+                    <th>Qty</th>
+                    <th>Warehouse</th>
+                  </tr>
+                </thead>
+                <tbody id="recentMovements"></tbody>
+              </table>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h3>Recent Stock In / Out</h3></div>
+            <div id="recentTransactions" class="compact-list"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="js/inventory.js"></script>
+    <script src="js/pagination.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

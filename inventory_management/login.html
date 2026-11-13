@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Login - Inventory Management System</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body class="login-page">
+    <div class="login-shell">
+      <div class="landing-nav">
+        <button type="button" class="landing-link" data-info="about">
+          About Us</button
+        ><button type="button" class="landing-link" data-info="contact">
+          Contact Us
+        </button>
+      </div>
+      <section class="login-visual">
+        <div class="brand light">
+          <img src="images/logo.png" /><span
+            ><b>INVENTORY</b><small>MANAGEMENT SYSTEM</small></span
+          >
+        </div>
+        <div class="visual-copy">
+          <h1>Manage Your Inventory<br /><span>Smarter,</span> Not Harder.</h1>
+          <p>
+            Track your stock, manage your warehouse,<br />and keep your business
+            running smoothly<br />— all in one system.
+          </p>
+          <div class="feature-list">
+            <div><i class="f green">✓</i>Real-time Inventory Tracking</div>
+            <div><i class="f blue">⌂</i>Multi-Warehouse Management</div>
+            <div><i class="f orange">▥</i>Detailed Reports &amp; Analytics</div>
+            <div><i class="f purple">◆</i>Secure &amp; Reliable</div>
+          </div>
+        </div>
+        <img
+          src="images/warehouse.png"
+          class="warehouse-art"
+          alt="Warehouse illustration"
+        />
+      </section>
+      <section class="login-form-side">
+        <div class="login-card">
+          <div class="brand dark center">
+            <img src="images/logo.png" /><span
+              ><b>INVENTORY</b><small>MANAGEMENT SYSTEM</small></span
+            >
+          </div>
+          <div class="form-heading">
+            <h2>Welcome Back!</h2>
+            <p>Sign in to your account to continue</p>
+          </div>
+          <form id="loginForm">
+            <label>Username</label
+            ><input
+              name="username"
+              id="username"
+              placeholder="Enter your username"
+              required
+            />
+            <label>Password</label>
+            <div class="password-field">
+              <input
+                name="password"
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                required
+              /><button type="button" id="togglePassword">◉</button>
+            </div>
+            <label class="remember"
+              ><input type="checkbox" id="remember" /> Remember me</label
+            >
+            <button class="btn primary full" type="submit">
+              Login <span>→</span>
+            </button>
+            <div class="or"><span>or</span></div>
+            <a class="btn outline full" href="register.html"
+              >Create an Account</a
+            >
+            <div id="loginMessage" class="message"></div>
+          </form>
+        </div>
+        <div class="login-team-directory">
+          <h4>Inventory Team</h4>
+          <div><b>Warehouse Manager</b><span>Suficiencia Andrew C</span></div>
+          <div><b>Inventory Staff / Clerk</b><span>Riel Jurado</span></div>
+          <div>
+            <b>Warehouse Staff / Associate</b><span>Banisil, Ferdausi</span>
+          </div>
+          <div>
+            <b>Inventory Controller / Analyst</b><span>Paje Meynard</span>
+          </div>
+          <div><b>Picker and Packer</b><span>Mendoza Franz Gian T.</span></div>
+          <div>
+            <b>Shipping and Receiving Clerk</b
+            ><span>Pompa, Eric Joseph F.</span>
+          </div>
+          <small
+            >System control is limited to the Warehouse Manager and Inventory
+            Controller / Analyst.</small
+          >
+        </div>
+        <div class="copyright">
+          © 2026 Inventory Management System. All rights reserved.
+        </div>
+      </section>
+    </div>
+    <div class="info-modal" id="infoModal">
+      <div class="info-box">
+        <button class="info-close" id="infoClose">×</button>
+        <div id="infoContent"></div>
+      </div>
+    </div>
+    <script src="js/login.js"></script>
+    <script src="js/landing.js"></script>
+  </body>
+</html>

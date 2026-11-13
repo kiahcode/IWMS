@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Rejected Items - Inventory Management System</title>
+    <link rel="stylesheet" href="css/style.css?v=20261110-rejected-items-v1" />
+  </head>
+  <body class="app" data-page="rejected-items">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img src="images/logo.png" /><span
+          ><b>INVENTORY</b><small>MANAGEMENT</small></span
+        >
+      </div>
+      <nav>
+        <a class="nav-link" href="dashboard.html" data-page="dashboard"
+          ><span>⌂</span>Dashboard</a
+        ><button class="nav-link inv-toggle" type="button">
+          <span>▦</span>Inventory <b>⌄</b>
+        </button>
+        <div class="submenu open" id="inventorySubmenu">
+          <a href="item-master.html" data-page="item-master">Item Master</a
+          ><a href="raw-materials.html" data-page="raw-materials"
+            >Raw Materials</a
+          ><a href="finished-goods.html" data-page="finished-goods"
+            >Finished Goods</a
+          ><a href="warehouse.html" data-page="warehouse">Warehouse</a
+          ><a href="stock-in.html" data-page="stock-in">Stock In</a
+          ><a href="stock-out.html" data-page="stock-out">Stock Out</a
+          ><a href="stock-transfer.html" data-page="stock-transfer"
+            >Stock Transfer</a
+          ><a href="stock-adjustment.html" data-page="stock-adjustment"
+            >Stock Adjustment</a
+          ><a href="stock-card.html" data-page="stock-card">Stock Card</a
+          ><a href="stock-movement.html" data-page="stock-movement"
+            >Stock Movement</a
+          ><a href="reorder-level.html" data-page="reorder-level"
+            >Reorder Level</a
+          ><a href="low-stock-alert.html" data-page="low-stock-alert"
+            >Low Stock Alert</a
+          ><a
+            class="admin-only"
+            href="inventory-reports.html"
+            data-page="inventory-reports"
+            >Inventory Reports</a
+          ><a
+            class="admin-only"
+            href="request-sheet.html"
+            data-page="request-sheet"
+            >Request Sheet</a
+          ><a href="delivery-progress.html" data-page="delivery-progress"
+            >Delivery Progress</a
+          ><a
+            class="admin-only"
+            href="delivery-receipt.html"
+            data-page="delivery-receipt"
+            >Delivery Receipt</a
+          ><a
+            class="admin-only"
+            href="rejected-items.html"
+            data-page="rejected-items"
+            >Rejected Items</a
+          >
+        </div>
+        <div class="side-label">SETTINGS</div>
+        <a class="nav-link" href="#" id="logoutBtn"><span>↪</span>Logout</a>
+      </nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button id="mobileMenu" class="mobile-menu">☰</button>
+        <div class="top-search">
+          ⌕<input
+            id="globalSearch"
+            placeholder="Find inventory, orders or reports"
+          />
+        </div>
+        <div class="top-actions">
+          <span>◔</span><span>◫</span
+          ><span class="user-chip"><b id="userName">Loading...</b></span>
+        </div>
+      </header>
+      <main class="content rejection-page">
+        <div class="rejection-heading">
+          <div class="rejection-heading-icon">✖</div>
+          <div>
+            <h1>Rejected Items</h1>
+            <p>
+              View and manage rejected items from deliveries across integrated
+              departments.
+            </p>
+          </div>
+        </div>
+        <div class="rejection-toolbar">
+          <div class="search-control">
+            ⌕<input
+              id="rejectionSearch"
+              placeholder="Search by PO Number or Supplier..."
+            />
+          </div>
+          <button
+            type="button"
+            class="btn refresh-quiet"
+            id="refreshRejections"
+            aria-label="Refresh reports"
+            title="Refresh reports"
+          >
+            ↻</button
+          ><button
+            type="button"
+            class="btn outline utility-hidden"
+            id="seedDemoRejections"
+            hidden
+          >
+            ＋ Load Sample Data</button
+          ><button
+            type="button"
+            class="btn light utility-hidden"
+            id="clearDemoRejections"
+            hidden
+          >
+            Remove Sample Data
+          </button>
+        </div>
+        <div class="table-wrap rejection-list-wrap">
+          <table class="rejection-list">
+            <thead>
+              <tr>
+                <th>Report ID</th>
+                <th>PO Number</th>
+                <th>Supplier / Department</th>
+                <th>DR Number</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="rejectionTable"></tbody>
+          </table>
+        </div>
+        <section class="rejection-detail-card" id="rejectionDetailCard">
+          <div class="rejection-detail-head">
+            <h2>▤ &nbsp; Rejected Items Details</h2>
+            <div class="detail-head-actions">
+              <button
+                type="button"
+                class="btn light"
+                id="sendEmailBtn"
+                disabled
+              >
+                ➤ &nbsp; Send Email
+              </button>
+            </div>
+          </div>
+          <div class="rejection-detail-empty" id="rejectionDetailEmpty">
+            Select a rejection report using the View button to see its linked
+            delivery receipt details and inspection summary.
+          </div>
+          <div
+            class="rejection-detail-body"
+            id="rejectionDetailBody"
+            hidden
+          ></div>
+        </section>
+      </main>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="js/inventory.js?v=20261109-rejection-v6"></script>
+    <script src="js/rejections.js?v=20261110-rejected-items-v1"></script>
+  </body>
+</html>

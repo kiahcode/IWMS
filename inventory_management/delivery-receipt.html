@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Delivery Receipt - Inventory Management System</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app" data-page="delivery-receipt">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img src="images/logo.png" /><span
+          ><b>INVENTORY</b><small>MANAGEMENT</small></span
+        >
+      </div>
+      <nav>
+        <a class="nav-link" href="dashboard.html" data-page="dashboard"
+          ><span>⌂</span>Dashboard</a
+        >
+        <button class="nav-link inv-toggle" type="button">
+          <span>▦</span>Inventory <b>⌄</b>
+        </button>
+        <div class="submenu open" id="inventorySubmenu">
+          <a href="item-master.html" data-page="item-master">Item Master</a
+          ><a href="raw-materials.html" data-page="raw-materials"
+            >Raw Materials</a
+          ><a href="finished-goods.html" data-page="finished-goods"
+            >Finished Goods</a
+          ><a href="warehouse.html" data-page="warehouse">Warehouse</a
+          ><a href="stock-in.html" data-page="stock-in">Stock In</a
+          ><a href="stock-out.html" data-page="stock-out">Stock Out</a
+          ><a href="stock-transfer.html" data-page="stock-transfer"
+            >Stock Transfer</a
+          ><a href="stock-adjustment.html" data-page="stock-adjustment"
+            >Stock Adjustment</a
+          ><a href="stock-card.html" data-page="stock-card">Stock Card</a
+          ><a href="stock-movement.html" data-page="stock-movement"
+            >Stock Movement</a
+          ><a href="reorder-level.html" data-page="reorder-level"
+            >Reorder Level</a
+          ><a href="low-stock-alert.html" data-page="low-stock-alert"
+            >Low Stock Alert</a
+          ><a
+            class="admin-only"
+            href="inventory-reports.html"
+            data-page="inventory-reports"
+            >Inventory Reports</a
+          ><a
+            class="admin-only"
+            href="request-sheet.html"
+            data-page="request-sheet"
+            >Request Sheet</a
+          ><a href="delivery-progress.html" data-page="delivery-progress"
+            >Delivery Progress</a
+          ><a
+            class="admin-only"
+            href="delivery-receipt.html"
+            data-page="delivery-receipt"
+            >Delivery Receipt</a
+          ><a
+            class="admin-only"
+            href="rejected-items.html"
+            data-page="rejected-items"
+            >Rejected Items</a
+          >
+        </div>
+        <div class="side-label">SETTINGS</div>
+        <a class="nav-link" href="#" id="logoutBtn"><span>↪</span>Logout</a>
+      </nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button id="mobileMenu" class="mobile-menu">☰</button>
+        <div class="top-search">
+          ⌕<input
+            id="globalSearch"
+            placeholder="Find inventory, orders or reports"
+          />
+        </div>
+        <div class="top-actions">
+          <span>◔</span><span>◫</span
+          ><span class="user-chip"><b id="userName">Loading...</b></span>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-heading">
+          <div>
+            <h1>Delivery Receipt</h1>
+            <p>View delivery receipt records and their complete details.</p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="search-control">
+            ⌕<input
+              id="drSearch"
+              placeholder="Search DR number, request or recipient"
+            />
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>DR Number</th>
+                <th>Receipt Date</th>
+                <th>Request No.</th>
+                <th>Destination</th>
+                <th>Recipient</th>
+                <th>Item</th>
+                <th>Size</th>
+                <th>Requested By</th>
+                <th>Received By</th>
+                <th>Status</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="drTable"></tbody>
+          </table>
+        </div>
+        <div class="modal" id="drModal">
+          <div class="modal-box">
+            <div class="modal-head">
+              <h3>Delivery Receipt Details</h3>
+              <button type="button" class="modal-close">×</button>
+            </div>
+            <div id="drDetailContent"></div>
+            <div class="modal-actions">
+              <button type="button" class="btn outline modal-close">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="js/inventory.js"></script>
+    <script src="js/pagination.js"></script>
+    <script src="js/delivery-receipts.js"></script>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Raw Materials - Inventory Management System</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app" data-page="raw-materials">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img src="images/logo.png" /><span
+          ><b>INVENTORY</b><small>MANAGEMENT</small></span
+        >
+      </div>
+      <nav>
+        <a class="nav-link" href="dashboard.html" data-page="dashboard"
+          ><span>⌂</span>Dashboard</a
+        >
+        <button class="nav-link inv-toggle" type="button">
+          <span>▦</span>Inventory <b>⌄</b>
+        </button>
+        <div class="submenu" id="inventorySubmenu">
+          <a href="item-master.html" data-page="item-master">Item Master</a>
+          <a href="raw-materials.html" data-page="raw-materials"
+            >Raw Materials</a
+          >
+          <a href="finished-goods.html" data-page="finished-goods"
+            >Finished Goods</a
+          >
+          <a href="warehouse.html" data-page="warehouse">Warehouse</a>
+          <a href="stock-in.html" data-page="stock-in">Stock In</a>
+          <a href="stock-out.html" data-page="stock-out">Stock Out</a>
+          <a href="stock-transfer.html" data-page="stock-transfer"
+            >Stock Transfer</a
+          >
+          <a href="stock-adjustment.html" data-page="stock-adjustment"
+            >Stock Adjustment</a
+          >
+          <a href="stock-card.html" data-page="stock-card">Stock Card</a>
+          <a href="stock-movement.html" data-page="stock-movement"
+            >Stock Movement</a
+          >
+          <a href="reorder-level.html" data-page="reorder-level"
+            >Reorder Level</a
+          >
+          <a href="low-stock-alert.html" data-page="low-stock-alert"
+            >Low Stock Alert</a
+          >
+          <a
+            class="admin-only"
+            href="inventory-reports.html"
+            data-page="inventory-reports"
+            >Inventory Reports</a
+          >
+          <a
+            class="admin-only"
+            href="request-sheet.html"
+            data-page="request-sheet"
+            >Request Sheet</a
+          >
+          <a href="delivery-progress.html" data-page="delivery-progress"
+            >Delivery Progress</a
+          ><a
+            class="admin-only"
+            href="delivery-receipt.html"
+            data-page="delivery-receipt"
+            >Delivery Receipt</a
+          ><a
+            class="admin-only"
+            href="rejected-items.html"
+            data-page="rejected-items"
+            >Rejected Items</a
+          >
+        </div>
+        <div class="side-label">SETTINGS</div>
+        <a class="nav-link" href="#" id="logoutBtn"><span>↪</span>Logout</a>
+      </nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button id="mobileMenu" class="mobile-menu">☰</button>
+        <div class="top-search">
+          ⌕<input
+            id="globalSearch"
+            placeholder="Find inventory, orders or reports"
+          />
+        </div>
+        <div class="top-actions">
+          <span>◔</span><span>◫</span
+          ><span class="user-chip"><b id="userName">Loading...</b></span>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-heading">
+          <div>
+            <h1>Raw Materials</h1>
+            <p>Manage raw material inventory.</p>
+          </div>
+          <button class="btn primary admin-only" id="addItemBtn">
+            + Add Item
+          </button>
+        </div>
+        <div class="toolbar">
+          <div class="search-control">
+            ⌕<input id="itemSearch" placeholder="Search..." />
+          </div>
+          <select id="warehouseFilter">
+            <option value="">All Warehouses</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item Code</th>
+                <th>Material Name</th>
+                <th>Supplier Name</th>
+                <th>Category</th>
+                <th>Unit</th>
+                <th>Current Stock</th>
+                <th>Reorder Level</th>
+                <th>Warehouse</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="itemsTable"></tbody>
+          </table>
+        </div>
+        <div class="modal" id="itemModal">
+          <div class="modal-box">
+            <div class="modal-head">
+              <h3>Item</h3>
+              <button type="button" class="modal-close">×</button>
+            </div>
+            <form id="itemModalForm">
+              <div class="form-grid">
+                <label>Item Code<input name="item_code" required /></label>
+                <label>Item Name<input name="item_name" required /></label>
+                <label>Brand<input name="brand" /></label>
+                <label
+                  >Supplier Name<select name="supplier_name">
+                    <option value="">Select supplier</option>
+                    <option value="Marikina Hide & Leather Co.">
+                      Marikina Hide & Leather Co.
+                    </option>
+                    <option value="2Cordillera Leather Works">
+                      2Cordillera Leather Works
+                    </option>
+                    <option value="SynthHide Textile Corp.">
+                      SynthHide Textile Corp.
+                    </option>
+                    <option value="SoleTech Rubber Manufacturing">
+                      SoleTech Rubber Manufacturing
+                    </option>
+                    <option value="MetalCraft Shoe Hardware">
+                      MetalCraft Shoe Hardware
+                    </option>
+                    <option value="EcoBox Packaging Solutions">
+                      EcoBox Packaging Solutions
+                    </option>
+                  </select></label
+                >
+                <label
+                  >Item Type<select name="item_type" required>
+                    <option value="Raw Material">Raw Material</option>
+                    <option value="Finished Good">Finished Good</option>
+                  </select></label
+                >
+                <label
+                  >Category<select
+                    name="category_id"
+                    id="categorySelect"
+                    required
+                  ></select
+                ></label>
+                <label>Unit<input name="unit" value="pcs" required /></label>
+                <label
+                  >Status<select name="status">
+                    <option>Active</option>
+                    <option>Inactive</option>
+                  </select></label
+                >
+
+                <label
+                  >Reorder Level<input
+                    name="reorder_level"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="10"
+                /></label>
+                <label class="full-col"
+                  >Description<textarea name="description" rows="3"></textarea>
+                </label>
+              </div>
+              <div class="modal-actions">
+                <button type="button" class="btn outline modal-close">
+                  Cancel</button
+                ><button class="btn primary" type="submit">Save</button>
+              </div>
+              <div class="form-message"></div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="js/inventory.js"></script>
+    <script src="js/pagination.js"></script>
+    <script src="js/items.js"></script>
+  </body>
+</html>
